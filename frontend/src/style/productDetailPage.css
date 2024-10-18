@@ -1,0 +1,54 @@
+.product-detail {
+    padding: 20px;
+    text-align: left; /* 将文本左对齐 */
+    border-radius: 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-detail h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem; /* 稍微减小字体大小 */
+}
+
+.product-detail p {
+    margin: 5px 0;
+}
+
+.product-detail .product-image {
+    width: 260px; /* 设置图片宽度 */
+    height: auto; /* 高度自适应 */
+    margin-right: 20px; /* 图片与文本间距 */
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: transform 0.2s;
+}
+
+.product-detail .product-image:hover {
+    transform: scale(1.05);
+}
+
+.product-detail button {
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.review-list {
+    margin-top: 20px;
+}
+
+.review-item {
+    border-left: 4px solid #007bff;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    background-color: #f1f1f1;
+    transition: background-color 0.2s;
+}
+
+.review-item:hover {
+    background-color: #e9ecef;
+}
+
+.review-item p {
+    margin: 0;
+}

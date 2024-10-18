@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 50px;
+        }
+        .actions {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>购物车功能</h1>
+
+    <!-- 查看购物车 -->
+    <h3>查看购物车</h3>
+    <form action="/shoppingCart/view-cart" method="GET">
+        <div class="form-group">
+            <label for="userId">用户ID:</label>
+            <input type="text" id="userId" name="userId" placeholder="输入用户ID">
+        </div>
+        <button type="submit">查看购物车</button>
+    </form>
+
+    <!-- 添加商品到购物车 -->
+    <h3>添加商品到购物车</h3>
+    <form action="/shoppingCart/add-product" method="POST">
+        <div class="form-group">
+            <label for="userId">用户ID:</label>
+            <input type="text" id="userId" name="userId" placeholder="输入用户ID">
+        </div>
+        <div class="form-group">
+            <label for="productId">产品ID:</label>
+            <input type="text" id="productId" name="productId" placeholder="输入产品ID">
+        </div>
+        <div class="form-group">
+            <label for="quantity">数量:</label>
+            <input type="text" id="quantity" name="quantity" placeholder="输入数量">
+        </div>
+        <button type="submit">添加到购物车</button>
+    </form>
+
+    <!-- 清空购物车 -->
+    <h3>清空购物车</h3>
+    <form action="/shoppingCart/clear-cart" method="POST">
+        <div class="form-group">
+            <label for="userId">用户ID:</label>
+            <input type="text" id="userId" name="userId" placeholder="输入用户ID">
+        </div>
+        <button type="submit">清空购物车</button>
+    </form>
+
+    <!-- 创建订单 -->
+    <h3>创建订单</h3>
+    <form action="/shoppingCart/create-order" method="POST">
+        <div class="form-group">
+            <label for="userId">用户ID:</label>
+            <input type="text" id="userId" name="userId" placeholder="输入用户ID">
+        </div>
+        <div class="form-group">
+            <label for="productIds">产品ID列表 (以逗号分隔):</label>
+            <input type="text" id="productIds" name="productIds" placeholder="例如: 1,2,3">
+        </div>
+        <div class="form-group">
+            <label for="quantities">数量列表 (与产品ID列表顺序对应):</label>
+            <input type="text" id="quantities" name="quantities" placeholder="例如: 1,2,3">
+        </div>
+        <div class="form-group">
+            <label for="voucherCode">代金券 (可选):</label>
+            <input type="text" id="voucherCode" name="voucherCode" placeholder="输入代金券代码">
+        </div>
+        <button type="submit">创建订单</button>
+    </form>
+
+    <!-- 删除订单 -->
+    <h3>删除订单</h3>
+    <form action="/shoppingCart/delete-order" method="POST">
+        <div class="form-group">
+            <label for="orderId">订单ID:</label>
+            <input type="text" id="orderId" name="orderId" placeholder="输入订单ID">
+        </div>
+        <button type="submit">删除订单</button>
+    </form>
+
+    <!-- 完成订单支付 -->
+    <h3>完成订单支付</h3>
+    <form action="/shoppingCart/complete-payment" method="POST">
+        <div class="form-group">
+            <label for="orderId">订单ID:</label>
+            <input type="text" id="orderId" name="orderId" placeholder="输入订单ID">
+        </div>
+        <div class="form-group">
+            <label for="voucherCode">代金券 (可选):</label>
+            <input type="text" id="voucherCode" name="voucherCode" placeholder="输入代金券代码">
+        </div>
+        <button type="submit">完成支付</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+.order-list {
+    background-color: #f8f9fa; /* 背景颜色 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    text-align: center;
+}
+
+.order-row:hover {
+    background-color: #e2e6ea; /* 鼠标悬停效果 */
+}
+
+.modal-body p {
+    margin: 0; /* 去掉段落的默认边距 */
+}
+
+.btn {
+    transition: background-color 0.3s; /* 按钮颜色过渡效果 */
+}
+
+.btn:hover {
+    opacity: 0.8; /* 鼠标悬停时改变透明度 */
+}
+.order-list {
+    background-color: #f8f9fa; /* Light background for the order list */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding around the container */
+}
+
+.order-row:hover {
+    background-color: #e9ecef; /* Highlight row on hover */
+}

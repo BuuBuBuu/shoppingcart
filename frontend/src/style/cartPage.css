@@ -1,0 +1,58 @@
+.cart-container {
+    background-color: #f8f9fa; /* 添加背景颜色 */
+    border-radius: 8px; /* 添加圆角 */
+    padding: 20px; /* 添加内边距 */
+}
+
+.card {
+    border: 1px solid #dee2e6; /* 添加边框 */
+    transition: transform 0.2s; /* 添加过渡效果 */
+}
+
+.card:hover {
+    transform: scale(1.02); /* 悬停时放大效果 */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* 红色删除按钮 */
+}
+
+.btn-primary:hover, .btn-success:hover {
+    background-color: #0056b3; /* 悬停时加深颜色 */
+}
+
+.cart-container {
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.list-group-item {
+    background-color: #ffffff; /* White background for items */
+    border: 1px solid #dee2e6; /* Light border for item separation */
+    transition: transform 0.2s;
+}
+
+.list-group-item:hover {
+    transform: scale(1.02); /* Scale effect on hover */
+}
+
+h3, h4 {
+    color: #333; /* Dark text color for headers */
+}
+
+.btn {
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for button effects */
+}
+
+.btn:hover {
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+

@@ -1,0 +1,21 @@
+.product-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 图片设置为正方形 */
+.product-image {
+    width: 100%; /* 让图片宽度充满卡片 */
+    aspect-ratio: 1 / 1; /* 设置为 1:1 的比例，确保正方形 */
+    object-fit: cover; /* 图片裁剪居中显示 */
+}
+
+/* 分页按钮样式 */
+.pagination .page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}

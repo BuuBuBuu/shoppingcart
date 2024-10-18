@@ -1,0 +1,16 @@
+body {
+    background-color: #f8f9fa; /* 背景色与登录页面保持一致 */
+}
+
+.card {
+    border-radius: 1rem; /* 卡片圆角 */
+}
+
+.card-body {
+    padding: 2rem; /* 卡片内边距 */
+}
+
+h2 {
+    font-family: 'Arial', sans-serif; /* 字体样式 */
+    color: #007bff; /* 标题颜色 */
+}

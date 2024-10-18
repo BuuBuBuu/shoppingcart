@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<h2 style="text-align: center;">Search Products Provided By All
+  Organizations</h2>
+<table style="margin-right: auto; margin-left: auto; width: 50%">
+  <tr>
+  </tr>
+  <tr>
+    <td>
+      <form action="#"
+            th:action="@{/all/product/searching}" method="post">
+        <div style="font-weight: bold">
+          Search By:
+        </div>
+        <select name="searchtype">
+          <option value="name">Name</option>
+          <option
+                  value="category">Category</option>
+        </select>
+        <div style="font-weight: bold">
+          Enter keyword: <input type="text"
+                                name="keyword" />
+        </div>
+        <div>
+        </div>
+        <fieldset>
+          <input type="submit" value="Search"
+          />
+        </fieldset>
+      </form>
+    </td>
+  </tr>
+</table>
+<br/>
+</body>
+</html>

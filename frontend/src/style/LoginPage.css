@@ -1,0 +1,36 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    border-radius: 1rem;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+h2 {
+    font-family: 'Arial', sans-serif;
+    color: #007bff;
+}
+
+.btn-link {
+    color: #007bff;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-dialog {
+    max-width: 400px;
+}
+
+.modal-content {
+    border-radius: 1rem;
+}

@@ -1,0 +1,29 @@
+<!-- @author Benjamin -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Login</title>
+    <link rel="stylesheet" th:href="@{/css/admin-login.css}"/> <!-- Updated to use the new stylesheet -->
+</head>
+<body>
+<div class="login-container">
+    <h2>Admin Login</h2>
+    <form action="/admin-ui/login" method="POST"> <!-- Matches SecurityConfig URL -->
+        <div class="form-group">
+            <label for="username">Email or Username:</label>
+            <input type="text" id="username" name="username" placeholder="Email or Username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+        </div>
+        <div class="error-message" th:if="${param.error}">
+            Invalid username or password.
+        </div>
+        <button type="submit" class="btn-login">Login</button>
+    </form>
+</div>
+</body>
+</html>

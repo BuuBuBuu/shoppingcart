@@ -1,0 +1,71 @@
+/* General button styles */
+.btn {
+    border-radius: 25px; /* Rounded corners */
+    padding: 10px 20px; /* Add padding for a better look */
+    font-weight: bold; /* Make button text bold */
+    transition: all 0.3s ease; /* Smooth transition for all changes */
+}
+
+/* Primary button styles */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white; /* White text color */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #004085; /* Darker border color */
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* Add shadow on hover */
+}
+
+/* Secondary button styles */
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+    box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
+}
+
+/* Warning button styles */
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: black; /* Black text color */
+}
+
+.btn-warning:hover {
+    background-color: #e0a800; /* Darker yellow on hover */
+    border-color: #d39e00;
+    box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+}
+
+/* Danger button styles */
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Darker red on hover */
+    border-color: #bd2130;
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+/* Link button styles */
+.btn-link {
+    color: #007bff; /* Link color */
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    color: #0056b3; /* Darker link color on hover */
+    text-decoration: underline; /* Underline on hover */
+}
+

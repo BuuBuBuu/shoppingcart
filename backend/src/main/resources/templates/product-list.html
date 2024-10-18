@@ -1,0 +1,333 @@
+<!-- @author Benjamin -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-content">
+            <h1 class="navbar-title">Admin Panel</h1>
+            <div class="navbar-buttons">
+                <a href="/admin-ui/products/new" class="btn btn-add-product">Add New Product</a>
+                <a href="/admin-ui/logout" class="btn btn-logout">Logout</a> <!-- Added Logout link -->
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Search and Pagination Controls -->
+<div class="search-pagination-row">
+    <!-- Search Form -->
+    <form th:action="@{/admin-ui/products}" method="get" class="search-form">
+        <div class="search-fields">
+            <input type="text" name="productId" placeholder="Search by Product ID" th:value="${productIdParam}"/>
+            <input type="text" name="name" placeholder="Search by Name" th:value="${nameParam}"/>
+            <input type="text" name="category" placeholder="Search by Category" th:value="${categoryParam}"/>
+            <button type="submit" class="btn">Search</button>
+            <a href="/admin-ui/products" class="btn btn-reset">Reset Search</a>
+        </div>
+    </form>
+
+    <!-- Items per page selector -->
+    <div class="pagination-controls">
+        <form th:action="@{/admin-ui/products}" method="get" id="pageSizeForm" class="pagination-form">
+            <div class="items-per-page-wrapper">
+                <label for="pageSize">Items per page:</label>
+                <select id="pageSize" name="size" th:onchange="this.form.submit()" th:value="${size}">
+                    <option value="10" th:selected="${size == '10'}">10</option>
+                    <option value="20" th:selected="${size == '20'}">20</option>
+                    <option value="30" th:selected="${size == '30'}">30</option>
+                    <option value="50" th:selected="${size == '50'}">50</option>
+                    <option value="100" th:selected="${size == '100'}">100</option>
+                    <option value="All" th:selected="${size == 'All'}">All</option>
+                </select>
+                <!-- Preserve search and sort parameters -->
+                <input type="hidden" name="productId" th:value="${productIdParam}"/>
+                <input type="hidden" name="name" th:value="${nameParam}"/>
+                <input type="hidden" name="category" th:value="${categoryParam}"/>
+                <input type="hidden" name="sortBy" th:value="${sortBy}"/>
+                <input type="hidden" name="order" th:value="${sortOrder}"/>
+                <input type="hidden" name="page" th:value="${currentPage}"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Table Wrapper for horizontal scroll -->
+<div class="table-wrapper">
+    <table class="table">
+        <thead>
+        <tr>
+            <!-- Product listing table columns with sortable headers -->
+            <th>
+                <a th:href="@{/admin-ui/products(
+                    productId=${productIdParam},
+                    name=${nameParam},
+                    category=${categoryParam},
+                    sortBy='productId',
+                    order=${sortBy == 'productId' ? (sortOrder == 'asc' ? 'desc' : 'asc') : 'asc'},
+                    page=${currentPage},
+                    size=${size}
+                )}">
+                    Product ID
+                    <span th:if="${sortBy == 'productId'}">
+                        <span th:if="${sortOrder == 'asc'}">▲</span>
+                        <span th:if="${sortOrder == 'desc'}">▼</span>
+                    </span>
+                </a>
+            </th>
+            <!-- Name -->
+            <th>
+                <a th:href="@{/admin-ui/products(
+                    productId=${productIdParam},
+                    name=${nameParam},
+                    category=${categoryParam},
+                    sortBy='name',
+                    order=${sortBy == 'name' ? (sortOrder == 'asc' ? 'desc' : 'asc') : 'asc'},
+                    page=${currentPage},
+                    size=${size}
+                )}">
+                    Name
+                    <span th:if="${sortBy == 'name'}">
+                        <span th:if="${sortOrder == 'asc'}">▲</span>
+                        <span th:if="${sortOrder == 'desc'}">▼</span>
+                    </span>
+                </a>
+            </th>
+            <!-- Category -->
+            <th>
+                <a th:href="@{/admin-ui/products(
+                    productId=${productIdParam},
+                    name=${nameParam},
+                    category=${categoryParam},
+                    sortBy='category',
+                    order=${sortBy == 'category' ? (sortOrder == 'asc' ? 'desc' : 'asc') : 'asc'},
+                    page=${currentPage},
+                    size=${size}
+                )}">
+                    Category
+                    <span th:if="${sortBy == 'category'}">
+                        <span th:if="${sortOrder == 'asc'}">▲</span>
+                        <span th:if="${sortOrder == 'desc'}">▼</span>
+                    </span>
+                </a>
+            </th>
+            <!-- Price -->
+            <th>
+                <a th:href="@{/admin-ui/products(
+                    productId=${productIdParam},
+                    name=${nameParam},
+                    category=${categoryParam},
+                    sortBy='price',
+                    order=${sortBy == 'price' ? (sortOrder == 'asc' ? 'desc' : 'asc') : 'asc'},
+                    page=${currentPage},
+                    size=${size}
+                )}">
+                    Price
+                    <span th:if="${sortBy == 'price'}">
+                        <span th:if="${sortOrder == 'asc'}">▲</span>
+                        <span th:if="${sortOrder == 'desc'}">▼</span>
+                    </span>
+                </a>
+            </th>
+            <!-- Add other headers similarly -->
+            <!-- Store Quantity -->
+            <th>
+                <a th:href="@{/admin-ui/products(
+                    productId=${productIdParam},
+                    name=${nameParam},
+                    category=${categoryParam},
+                    sortBy='storeQuantity',
+                    order=${sortBy == 'storeQuantity' ? (sortOrder == 'asc' ? 'desc' : 'asc') : 'asc'},
+                    page=${currentPage},
+                    size=${size}
+                )}">
+                    Store Quantity
+                    <span th:if="${sortBy == 'storeQuantity'}">
+                        <span th:if="${sortOrder == 'asc'}">▲</span>
+                        <span th:if="${sortOrder == 'desc'}">▼</span>
+                    </span>
+                </a>
+            </th>
+            <!-- Description -->
+            <th>
+                <a th:href="@{/admin-ui/products(
+                    productId=${productIdParam},
+                    name=${nameParam},
+                    category=${categoryParam},
+                    sortBy='description',
+                    order=${sortBy == 'description' ? (sortOrder == 'asc' ? 'desc' : 'asc') : 'asc'},
+                    page=${currentPage},
+                    size=${size}
+                )}">
+                    Description
+                    <span th:if="${sortBy == 'description'}">
+                        <span th:if="${sortOrder == 'asc'}">▲</span>
+                        <span th:if="${sortOrder == 'desc'}">▼</span>
+                    </span>
+                </a>
+            </th>
+            <!-- Discount -->
+            <th>
+                <a th:href="@{/admin-ui/products(
+                    productId=${productIdParam},
+                    name=${nameParam},
+                    category=${categoryParam},
+                    sortBy='discount',
+                    order=${sortBy == 'discount' ? (sortOrder == 'asc' ? 'desc' : 'asc') : 'asc'},
+                    page=${currentPage},
+                    size=${size}
+                )}">
+                    Discount
+                    <span th:if="${sortBy == 'discount'}">
+                        <span th:if="${sortOrder == 'asc'}">▲</span>
+                        <span th:if="${sortOrder == 'desc'}">▼</span>
+                    </span>
+                </a>
+            </th>
+            <!-- Image URL -->
+            <th>
+                <a th:href="@{/admin-ui/products(
+                    productId=${productIdParam},
+                    name=${nameParam},
+                    category=${categoryParam},
+                    sortBy='imageUrl',
+                    order=${sortBy == 'imageUrl' ? (sortOrder == 'asc' ? 'desc' : 'asc') : 'asc'},
+                    page=${currentPage},
+                    size=${size}
+                )}">
+                    Image URL
+                    <span th:if="${sortBy == 'imageUrl'}">
+                        <span th:if="${sortOrder == 'asc'}">▲</span>
+                        <span th:if="${sortOrder == 'desc'}">▼</span>
+                    </span>
+                </a>
+            </th>
+            <!-- Tags -->
+            <th>
+                <a th:href="@{/admin-ui/products(
+                    productId=${productIdParam},
+                    name=${nameParam},
+                    category=${categoryParam},
+                    sortBy='tags',
+                    order=${sortBy == 'tags' ? (sortOrder == 'asc' ? 'desc' : 'asc') : 'asc'},
+                    page=${currentPage},
+                    size=${size}
+                )}">
+                    Tags
+                    <span th:if="${sortBy == 'tags'}">
+                        <span th:if="${sortOrder == 'asc'}">▲</span>
+                        <span th:if="${sortOrder == 'desc'}">▼</span>
+                    </span>
+                </a>
+            </th>
+            <!-- View Count -->
+            <th>
+                <a th:href="@{/admin-ui/products(
+                    productId=${productIdParam},
+                    name=${nameParam},
+                    category=${categoryParam},
+                    sortBy='viewCount',
+                    order=${sortBy == 'viewCount' ? (sortOrder == 'asc' ? 'desc' : 'asc') : 'asc'},
+                    page=${currentPage},
+                    size=${size}
+                )}">
+                    View Count
+                    <span th:if="${sortBy == 'viewCount'}">
+                        <span th:if="${sortOrder == 'asc'}">▲</span>
+                        <span th:if="${sortOrder == 'desc'}">▼</span>
+                    </span>
+                </a>
+            </th>
+            <!-- Is Visible -->
+            <th>
+                <a th:href="@{/admin-ui/products(
+                    productId=${productIdParam},
+                    name=${nameParam},
+                    category=${categoryParam},
+                    sortBy='isVisible',
+                    order=${sortBy == 'isVisible' ? (sortOrder == 'asc' ? 'desc' : 'asc') : 'asc'},
+                    page=${currentPage},
+                    size=${size}
+                )}">
+                    Is Visible
+                    <span th:if="${sortBy == 'isVisible'}">
+                        <span th:if="${sortOrder == 'asc'}">▲</span>
+                        <span th:if="${sortOrder == 'desc'}">▼</span>
+                    </span>
+                </a>
+            </th>
+            <th>Actions</th> <!-- Not sortable -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.productId}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.category}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.storeQuantity}"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.discount}"></td>
+            <td th:text="${product.imageUrl}"></td>
+            <td th:text="${product.tags}"></td>
+            <td th:text="${product.viewCount}"></td>
+            <td th:text="${product.isVisible ? 'Yes' : 'No'}"></td>
+            <td>
+                <div class="action-buttons">
+                    <a th:href="@{/admin-ui/products/edit/{productId}(productId=${product.productId})}" class="btn btn-edit">Edit</a>
+<!--                    <a th:href="@{/admin-ui/products/delete/{productId}(productId=${product.productId})}" class="btn btn-delete">Delete</a>-->
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Pagination Navigation -->
+<div class="pagination-nav">
+    <span th:if="${currentPage > 0}">
+        <a th:href="@{/admin-ui/products(
+            productId=${productIdParam},
+            name=${nameParam},
+            category=${categoryParam},
+            sortBy=${sortBy},
+            order=${sortOrder},
+            page=${currentPage - 1},
+            size=${size}
+        )}">Previous</a>
+    </span>
+    <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+        <a th:href="@{/admin-ui/products(
+            productId=${productIdParam},
+            name=${nameParam},
+            category=${categoryParam},
+            sortBy=${sortBy},
+            order=${sortOrder},
+            page=${i},
+            size=${size}
+        )}"
+           th:text="${i + 1}"
+           th:classappend="${i == currentPage ? 'active' : ''}"></a>
+    </span>
+    <span th:if="${currentPage < totalPages - 1}">
+        <a th:href="@{/admin-ui/products(
+            productId=${productIdParam},
+            name=${nameParam},
+            category=${categoryParam},
+            sortBy=${sortBy},
+            order=${sortOrder},
+            page=${currentPage + 1},
+            size=${size}
+        )}">Next</a>
+    </span>
+</div>
+
+</body>
+</html>

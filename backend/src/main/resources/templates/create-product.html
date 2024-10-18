@@ -1,0 +1,107 @@
+<!-- @author Benjamin -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create New Product</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-content" style="display: flex; justify-content: space-between; align-items: center;">
+      <h1 class="navbar-title">Admin Panel</h1>
+      <a href="/admin-ui/logout" class="btn btn-logout">Logout</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <h2>Create New Product</h2>
+  <form th:action="@{/admin-ui/products}" th:object="${product}" method="post" class="form-container">
+    <!-- Name -->
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" th:field="*{name}" minlength="2" maxlength="50" required/>
+    </div>
+
+    <!-- Category -->
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <input type="text" th:field="*{category}" maxlength="100" required/>
+    </div>
+
+    <!-- Price -->
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="number" step="0.01" th:field="*{price}" max="1000000" required/>
+    </div>
+
+    <!-- Store Quantity -->
+    <div class="form-group">
+      <label for="storeQuantity">Store Quantity:</label>
+      <input type="number" th:field="*{storeQuantity}" max="100000" required/>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea th:field="*{description}" rows="4" maxlength="1000000" required></textarea>
+    </div>
+
+    <!-- Discount -->
+    <div class="form-group">
+      <label for="discount">Discount:</label>
+      <input type="number" step="0.01" th:field="*{discount}" max="100" required/>
+    </div>
+
+    <!-- Image URL -->
+    <div class="form-group">
+      <label for="imageUrl">Image URL:</label>
+      <input type="text" th:field="*{imageUrl}" maxlength="1000000" required oninput="updateImagePreview()" id="imageUrl"/>
+    </div>
+
+    <!-- Image Preview -->
+    <div class="form-group">
+      <label for="imagePreview">Image Preview:</label>
+      <img id="imagePreview" src="" alt="Image Preview"/>
+    </div>
+
+    <!-- Tags -->
+    <div class="form-group">
+      <label for="tags">Tags:</label>
+      <input type="text" th:field="*{tags}" maxlength="1000000"/>
+    </div>
+
+    <!-- View Count -->
+    <div class="form-group">
+      <label for="viewCount">View Count:</label>
+      <input type="number" th:field="*{viewCount}" required/>
+    </div>
+
+    <!-- Is Visible -->
+    <div class="form-group">
+      <label for="isVisible">Is Visible:</label>
+      <input type="checkbox" th:field="*{isVisible}"/>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Create</button>
+      <a href="/admin-ui/products" class="btn btn-secondary">Back to All Products</a>
+    </div>
+  </form>
+</div>
+
+<!-- JavaScript to update image preview -->
+<script type="text/javascript">
+  function updateImagePreview() {
+    const imageUrl = document.getElementById('imageUrl').value;
+    const imagePreview = document.getElementById('imagePreview');
+    imagePreview.src = imageUrl;
+  }
+</script>
+
+</body>
+</html>

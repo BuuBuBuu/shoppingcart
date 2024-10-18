@@ -1,0 +1,416 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7; /* Light background for better contrast */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Sticky Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.navbar-title {
+    font-size: 24px;
+}
+
+.btn-add-product {
+    padding: 10px 20px;
+    background-color: #2ecc71;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+/* Search and Pagination Row */
+.search-pagination-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-pagination-row {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* Search Bar */
+.search-form {
+    display: flex;
+    flex-grow: 1;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-right: 20px;
+}
+
+.search-fields {
+    display: flex;
+    gap: 10px;
+    flex-grow: 1;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-fields input {
+    padding: 8px 12px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    flex-grow: 1;
+}
+
+.btn, .btn-reset {
+    padding: 8px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-reset {
+    background-color: #e74c3c;
+}
+
+.btn:hover, .btn-reset:hover {
+    opacity: 0.9;
+}
+
+/* Items per page selector */
+.pagination-controls {
+    display: flex;
+    gap: 10px;
+    padding: 0;
+}
+
+.items-per-page-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.items-per-page-wrapper label {
+    margin-right: 10px;
+}
+
+.pagination-controls select {
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+
+/* Table with padding and horizontal scrolling */
+.table-wrapper {
+    overflow-x: auto;
+    overflow-y: auto;
+    margin-top: 20px;
+    max-height: 70vh;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f4f4f4;
+}
+
+.table td {
+    background-color: #fff;
+}
+
+.table th a {
+    text-decoration: none;
+    color: black;
+}
+
+.table a.btn {
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+/* Action buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.table a.btn-delete {
+    background-color: #e74c3c;
+}
+
+.table a.btn-edit {
+    background-color: #3498db;
+}
+
+/* Pagination Navigation */
+.pagination-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.pagination-nav a {
+    padding: 10px 25px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    width: 70px;
+    min-width: 70px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.pagination-nav a.active {
+    background-color: #2ecc71;
+}
+
+/* Improved Form Container Styling */
+.form-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input, .form-group textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #3498db;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background-color: #3498db;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+/* Error message styling */
+.form-group .error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-add-product {
+        margin-top: 10px;
+    }
+
+    .search-pagination-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-fields {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .pagination-controls {
+        margin-top: 10px;
+    }
+
+    .pagination-nav {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 10px;
+    }
+
+    .table-wrapper {
+        overflow-x: scroll;
+        overflow-y: scroll;
+        max-height: 70vh;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .form-container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+}
+
+/* --- Login Page Styling --- */
+
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-container .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.login-container .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login-container .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.login-container .btn-login {
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-container .btn-login:hover {
+    background-color: #2980b9;
+}
+
+.login-container .error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 20px;
+    }
+
+    .login-container .form-group input {
+        font-size: 14px;
+    }
+
+    .login-container .btn-login {
+        font-size: 14px;
+    }
+}
